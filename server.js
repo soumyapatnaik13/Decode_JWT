@@ -20,6 +20,6 @@ mongose.connect('mongodb://localhost:27017/PW_Skills', { useNewUrlParser: true, 
 app.use("/api/vi/students",router)
 
 
-app.listen(process.env.portNumber, () => {
+app.listen(process.env.port, () => {
     console.log(`App is listening at port number ${portnumber} `);
 });
