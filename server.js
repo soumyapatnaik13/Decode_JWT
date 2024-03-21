@@ -5,7 +5,7 @@ const dotenv= require("dotenv");
 const mongose= require("mongoose")
 const jwt= require("jsonwebtoken")
 const app = express();
-
+dotenv.config();
 app.use(bodyParser.json());
 // Parse URL-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -19,7 +19,7 @@ mongose.connect('mongodb://localhost:27017/PW_Skills', { useNewUrlParser: true, 
     });
 app.use("/api/vi/students",router)
 
-portnumber =3000;
-app.listen(portnumber, () => {
+
+app.listen(process.env.portNumber, () => {
     console.log(`App is listening at port number ${portnumber} `);
 });
