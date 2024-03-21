@@ -15,13 +15,13 @@ exports.userLogin = async (req, res) => {
     const user = await userModel.find({ "email": email });//returns a promise so wait untill it gets the response
 
     if (user.length > 0) { //retuns a array if  that length is >0 means on document is there
-      const secretKey = "secret"; 
+      const secretKey = "secret"; //if not specified the in the .env file
       const payload = { //create the paylaod which has obj and propery which value is the email
         email: user[0].email,
 
       };
 
-      jwt.sign(payload, secretKey, (err, token) => {
+      jwt.sign(payload, process.env.secretkey, (err, token) => {
         if (err) {
           res.status(500).json({ message: "Failed to generate token" });
         } else {
