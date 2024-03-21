@@ -5,7 +5,7 @@ verify=(req,res,next)=>{
     // console.log(userToken)//return a bearer token 
     const extract= userToken.split(' ')[1] //["braerer",<token>]
     try{
-        jwt.verify(extract,"secret",(err,decode)=>{
+        jwt.verify(extract,process.env.secretkey,(err,decode)=>{
             if(err){
                 res.status(404).json({
                  "message": "not found"
